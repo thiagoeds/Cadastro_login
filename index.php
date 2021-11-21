@@ -1,34 +1,92 @@
+<?php
+
+	require_once 'classes/usuarios.php';
+	$usuario = new Usuario;
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <title>login</title>
-</head>
+	<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>login</title>
+	</head>
 
-<body>
+	<body>		
+		
+		<div>
+			<form class="box" action="index.php" method="post">
+				<h1>Login</h1>
+				<input type="email" required name="email" placeholder="E-mail">
+				<input type="password" required name="senha" placeholder="Senha">
 
-  <div>
-	<form class="box" action="index.html" method="post">
-		<h1>Login</h1>
-		<input type="email" name="email" placeholder="e-mail">
-		<input type="password" name="senha" placeholder="Senha">
-		<a href="acesso.php">
-			<input type="submit" name="" value="Login">
-		</a>
-			<br/>
-		<p>Ainda não é inscrito? 
-			<a id="cadastrar" href="cadastro.php">cadastre-se aqui!</a>
-		</p>
-	</form>
+				<button>Login</button>
+				
+				<br/>
+				<p>Ainda não é inscrito? 
+					<a id="cadastrar" href="cadastro.php">cadastre-se aqui!</a>
+				</p>
+			</form>
+		</div>
 
-  </div>
+		<?php
 
-  
+			if(isset($_POST['email']) && isset($_POST['senha']))
+			{				
+				$email = addslashes($_POST['email']);
+				$senha = addslashes($_POST['senha']);
+            
+				if(!empty($email) && !empty($senha))
+				{
+					$usuario->conectar("cadastramento_login","localhost","root","");
 
-</body>
+					if($usuario->msgErro == "") 
+					{
+						if($usuario->logar($email, $senha))
+						{
+
+							header("Location: ./acesso.php");
+
+						} else {
+
+							?>
+								<div class="msg-erro">
+									Email e/ou Senha esta incorreto!
+								</div>
+							<?php
+
+						}
+					} else {
+
+						?>
+						<div class="msg-erro">
+							echo "Erro: ".$usuario->msgErro;
+						</div>
+					<?php 
+
+						
+
+					}
+					
+
+				} else {
+
+					?>
+						<div class="msg-erro">
+							Preencha todos os campos!
+						</div>
+					<?php 
+
+				}
+
+
+			}	
+		?>
+
+	</body>
 
 </html>
