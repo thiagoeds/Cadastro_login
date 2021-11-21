@@ -18,7 +18,7 @@ Class Usuario
         
     }
 
-    public function cadastrar($nome, $cpf, $email, $rg, $masculino, $feminino, $outros, $data_nascimento, $senha, $estado, $cidade, $cep, $bairro, $rua, $numero, $complemento)
+    public function cadastrar($nome, $cpf, $email, $rg, $sexo, $data_nascimento, $senha, $estado, $cidade, $cep, $bairro, $rua, $numero, $complemento)
     {
     
         //verificar se já existe o email cadastrado
@@ -35,14 +35,12 @@ Class Usuario
 
             //caso não, cadastrar
 
-            $sql = $this->pdo->prepare("INSERT INTO usuarios (nome, cpf, email, rg, masculino, feminino, outros, data_nascimento, senha, estado, cidade, cep, bairro, rua, numero, complemento) VALUES (:nome, :cpf, :email, :rg, :masculino, :feminino, :outros, :data_nascimento, :senha, :estado, :cidade, :cep, :bairro, :rua, :numero, :complemento )");
+            $sql = $this->pdo->prepare("INSERT INTO usuarios (nome, cpf, email, rg, sexo, data_nascimento, senha, estado, cidade, cep, bairro, rua, numero, complemento) VALUES (:nome, :cpf, :email, :rg, :sexo, :data_nascimento, :senha, :estado, :cidade, :cep, :bairro, :rua, :numero, :complemento )");
             $sql->bindValue(":nome", $nome);
             $sql->bindValue(":cpf", $cpf);
             $sql->bindValue(":email", $email);
             $sql->bindValue(":rg", $rg);
-            $sql->bindValue(":masculino", $masculino);
-            $sql->bindValue(":feminino", $feminino);
-            $sql->bindValue(":outros", $outros);
+            $sql->bindValue(":sexo", $sexo);
             $sql->bindValue(":data_nascimento", $data_nascimento);
             $sql->bindValue(":senha", md5($senha));
             $sql->bindValue(":estado", $estado);

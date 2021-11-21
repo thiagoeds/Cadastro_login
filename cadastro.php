@@ -28,16 +28,14 @@
             <input type="email" name="email" size="40" placeholder="e-mail valido" require  maxlength="100">
             <label for="rg">RG:</label>
             <input type="text" name="rg" size="40" placeholder="12.345.678" maxlength="15"><br><br>
-                <div class="sexo">
-                    <label>Sexo:</label> &nbsp;
-                    <label for="masculino">Masculino</label>&nbsp;
-                    <input type="radio" name="masculino" id="op1">&nbsp;
-                    <label for="feminino">Feminino</label>&nbsp;
-                    <input type="radio" name="feminino" id="op1">&nbsp;
-                    <label for="outros">Outros</label>&nbsp;
-                    <input type="radio" name="outros" id="op1">
-                </div>
-            <br>
+                <label>Sexo:</label>
+                <select name="sexo" >
+                    <option value="0">como se identifica</option>             
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            <br><br>
             <label for="data">Data de Nascimento:</label>
             <input type="date" name="data_nascimento" id="op1"> <br><br>
             <label for="password">Senha:</label>
@@ -101,12 +99,8 @@
             <div class="rodape">
             <button onclick="location.href='index.php'" type="button">
             Voltar</button>
-                <!-- <a href="index.php">
-                    <input type="text" value="Voltar">
-                </a> -->&nbsp;&nbsp;&nbsp;
-                <button>Cadastrar</button>
-                    <!-- <input class="bnt" type="button" value="Cadastrar"> -->
-                    
+                &nbsp;&nbsp;&nbsp;
+                <button>Cadastrar</button>                 
                 
             </div>  <br>                  
 
@@ -123,9 +117,7 @@
             $cpf = addslashes($_POST['cpf']);
             $email = addslashes($_POST['email']);
             $rg = addslashes($_POST['rg']);
-            $masculino = addslashes($_POST['masculino'] ?? 'n');
-            $feminino = addslashes($_POST['feminino'] ?? 'n');
-            $outros = addslashes($_POST['outros'] ?? 'n');
+            $sexo = addslashes($_POST['sexo']);           
             $data_nascimento = addslashes($_POST['data_nascimento']);
             $senha = addslashes($_POST['senha']);
             $conf_senha = addslashes($_POST['conf_senha']);
@@ -139,25 +131,8 @@
 
             // Verificar se esta preenchido
 
-            /* print_r(['nome ' => $nome ,
-            'cpf ' => $cpf ,
-            'email ' => $email ,
-            'rg ' => $rg ,
-            'masculino ' => $masculino ,
-            'feminino ' => $feminino ,
-            'outros ' => $outros ,
-            'data_nascimento ' => $data_nascimento ,
-            'senha ' => $senha ,
-            'conf_senha ' => $conf_senha ,
-            'estado ' => $estado ,
-            'cidade ' => $cidade ,
-            'cep ' => $cep ,
-            'bairro ' => $bairro ,
-            'numero ' => $numero ,
-            'rua ' => $rua ,
-            'complemento ' => $complemento ,]); */
 
-            if(!empty($nome) && !empty($cpf) && !empty($email) && !empty($rg) && !empty($masculino) && !empty($feminino) && !empty($outros) && !empty($data_nascimento) && !empty($senha) && !empty($conf_senha) && !empty($estado) && !empty($cidade) && !empty($cep) && !empty($bairro) && !empty($rua) && !empty($numero) && !empty($complemento))
+            if(!empty($nome) && !empty($cpf) && !empty($email) && !empty($rg) && !empty($sexo) && !empty($data_nascimento) && !empty($senha) && !empty($conf_senha) && !empty($estado) && !empty($cidade) && !empty($cep) && !empty($bairro) && !empty($rua) && !empty($numero) && !empty($complemento))
 
             {
                 $usuario->conectar("cadastramento_login","localhost","root","");
@@ -165,7 +140,7 @@
                 {
                     if($senha == $conf_senha) 
                     {
-                        $retorno = $usuario->cadastrar($nome,$cpf,$email,$rg,$masculino,$feminino,$outros,$data_nascimento,$senha,$estado,$cidade,$cep,$bairro,$rua,$numero,$complemento);
+                        $retorno = $usuario->cadastrar($nome,$cpf,$email,$rg,$sexo,$data_nascimento,$senha,$estado,$cidade,$cep,$bairro,$rua,$numero,$complemento);
                         
                         if($retorno)
                         {
