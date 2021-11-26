@@ -42,7 +42,7 @@
             
 				if(!empty($email) && !empty($senha))
 				{
-					$usuario->conectar("cadastramento_login","localhost","root","");
+					$usuario->conectar();
 
 					if($usuario->msgErro == "") 
 					{

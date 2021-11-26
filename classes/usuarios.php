@@ -4,9 +4,29 @@ Class Usuario
 {
     private $pdo;
     public $msgErro = "";
+    
+    public $nome;
+    public $cpf;
+    public $email;
+    public $rg;
+    public $sexo;
+    public $data_nascimento;
+    public $senha;
+    public $estado;
+    public $cidade;
+    public $cep;
+    public $bairro;
+    public $rua;
+    public $numero;
+    public $complemento;
 
-    public function conectar($nome, $host, $usuario, $senha)
+    public function conectar()
     {
+        $nome = "cadastramento_login";
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "";
+
         try
         {
             $this->pdo = new PDO("mysql:dbname=".$nome.";host=".$host,$usuario,$senha);  
@@ -18,7 +38,7 @@ Class Usuario
         
     }
 
-    public function cadastrar($nome, $cpf, $email, $rg, $sexo, $data_nascimento, $senha, $estado, $cidade, $cep, $bairro, $rua, $numero, $complemento)
+    public function cadastrar()
     {
     
         //verificar se já existe o email cadastrado
@@ -36,20 +56,20 @@ Class Usuario
             //caso não, cadastrar
 
             $sql = $this->pdo->prepare("INSERT INTO usuarios (nome, cpf, email, rg, sexo, data_nascimento, senha, estado, cidade, cep, bairro, rua, numero, complemento) VALUES (:nome, :cpf, :email, :rg, :sexo, :data_nascimento, :senha, :estado, :cidade, :cep, :bairro, :rua, :numero, :complemento )");
-            $sql->bindValue(":nome", $nome);
-            $sql->bindValue(":cpf", $cpf);
-            $sql->bindValue(":email", $email);
-            $sql->bindValue(":rg", $rg);
-            $sql->bindValue(":sexo", $sexo);
-            $sql->bindValue(":data_nascimento", $data_nascimento);
-            $sql->bindValue(":senha", md5($senha));
-            $sql->bindValue(":estado", $estado);
-            $sql->bindValue(":cidade", $cidade);
-            $sql->bindValue(":cep", $cep);
-            $sql->bindValue(":bairro", $bairro);
-            $sql->bindValue(":rua", $rua);
-            $sql->bindValue(":numero", $numero);
-            $sql->bindValue(":complemento", $complemento);
+            $sql->bindValue(":nome", $this->$nome);
+            $sql->bindValue(":cpf", $this->$cpf);
+            $sql->bindValue(":email", $this->$email);
+            $sql->bindValue(":rg", $this->$rg);
+            $sql->bindValue(":sexo", $this->$sexo);
+            $sql->bindValue(":data_nascimento", $this->$data_nascimento);
+            $sql->bindValue(":senha", md5($this->$senha));
+            $sql->bindValue(":estado", $this->$estado);
+            $sql->bindValue(":cidade", $this->$cidade);
+            $sql->bindValue(":cep", $this->$cep);
+            $sql->bindValue(":bairro", $this->$bairro);
+            $sql->bindValue(":rua", $this->$rua);
+            $sql->bindValue(":numero", $this->$numero);
+            $sql->bindValue(":complemento", $this->$complemento);
 
             $sql->execute();
             return true;
@@ -60,7 +80,7 @@ Class Usuario
     public function logar($email, $senha)
     {
       
-  if($this->conectar("cadastramento_login","localhost","root","")){
+  if($this->conectar()){
 
         //verificar se o email e senha estão cadastrados, se sim
         $sql = $this->pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha");

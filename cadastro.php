@@ -113,21 +113,21 @@
         //Verificar se clicou no botão
         if(isset($_POST['nome']))
         {
-            $nome = addslashes($_POST['nome']);
-            $cpf = addslashes($_POST['cpf']);
-            $email = addslashes($_POST['email']);
-            $rg = addslashes($_POST['rg']);
-            $sexo = addslashes($_POST['sexo']);           
-            $data_nascimento = addslashes($_POST['data_nascimento']);
-            $senha = addslashes($_POST['senha']);
-            $conf_senha = addslashes($_POST['conf_senha']);
-            $estado = addslashes($_POST['estado']);
-            $cidade = addslashes($_POST['cidade']);
-            $cep = addslashes($_POST['cep']);
-            $bairro = addslashes($_POST['bairro']);
-            $numero = addslashes($_POST['numero']);
-            $rua = addslashes($_POST['rua']);
-            $complemento = addslashes($_POST['complemento']);
+            $this->$nome = addslashes($_POST['nome']);
+            $this->$cpf = addslashes($_POST['cpf']);
+            $this->$email = addslashes($_POST['email']);
+            $this->$rg = addslashes($_POST['rg']);
+            $this->$sexo = addslashes($_POST['sexo']);           
+            $this->$data_nascimento = addslashes($_POST['data_nascimento']);
+            $this->$senha = addslashes($_POST['senha']);
+            $this->$conf_senha = addslashes($_POST['conf_senha']);
+            $this->$estado = addslashes($_POST['estado']);
+            $this->$cidade = addslashes($_POST['cidade']);
+            $this->$cep = addslashes($_POST['cep']);
+            $this->$bairro = addslashes($_POST['bairro']);
+            $this->$numero = addslashes($_POST['numero']);
+            $this->$rua = addslashes($_POST['rua']);
+            $this->$complemento = addslashes($_POST['complemento']);
 
             // Verificar se esta preenchido
 
@@ -135,12 +135,12 @@
             if(!empty($nome) && !empty($cpf) && !empty($email) && !empty($rg) && !empty($sexo) && !empty($data_nascimento) && !empty($senha) && !empty($conf_senha) && !empty($estado) && !empty($cidade) && !empty($cep) && !empty($bairro) && !empty($rua) && !empty($numero) && !empty($complemento))
 
             {
-                $usuario->conectar("cadastramento_login","localhost","root","");
+                $usuario->conectar();
                 if($usuario->msgErro == "")  // se esta tudo certo
                 {
                     if($senha == $conf_senha) 
                     {
-                        $retorno = $usuario->cadastrar($nome,$cpf,$email,$rg,$sexo,$data_nascimento,$senha,$estado,$cidade,$cep,$bairro,$rua,$numero,$complemento);
+                        $retorno = $usuario->cadastrar();
                         
                         if($retorno)
                         {

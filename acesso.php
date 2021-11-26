@@ -82,9 +82,7 @@
             floresta.style.top = value * 0.25 + 'px';
             header.style.top = value * -0.5 + 'px';
         })
-    </script>
-
-        
+    </script>      
     
 </body>
 </html>
