@@ -1,14 +1,18 @@
 <?php
 
-Class Livros 
+Class Livro 
 {
     private $pdo;
     public $msgErro = "";
     
     public $nome;
-    public $categoria;
     public $autor;
+    public $editora;
+    public $categoria;
+    public $idioma;    
     public $ano;
+    public $pagina;
+    public $edicao;
     public $assunto;
     public $sinopse;
 
@@ -47,11 +51,16 @@ Class Livros
 
             //caso não, cadastrar
 
-            $sql = $this->pdo->prepare("INSERT INTO livros (nome, categoria, autor, ano, assunto, sinopse) VALUES (:nome, :categoria, :autor, :ano, :assunto, :sinopse )");
+            $sql = $this->pdo->prepare("INSERT INTO livros (nome, autor, editora, categoria, idioma, ano, pagina, edicao, assunto, sinopse) VALUES (:nome, :autor, :editora, :categoria, :idioma, :ano, :pagina, :edicao, :assunto, :sinopse)");
+
             $sql->bindValue(":nome", $this->$nome);
-            $sql->bindValue(":categoria", $this->$categoria);
             $sql->bindValue(":autor", $this->$autor);
+            $sql->bindValue(":editora", $this->$editora);
+            $sql->bindValue(":categoria", $this->$categoria);
+            $sql->bindValue(":idioma", $this->$idioma);
             $sql->bindValue(":ano", $this->$ano);
+            $sql->bindValue(":ano", $this->$pagina);
+            $sql->bindValue(":edicao", $this->$edicao);
             $sql->bindValue(":assunto", $this->$assunto);
             $sql->bindValue(":sinopse", $this->$sinopse);
 
