@@ -1,16 +1,19 @@
 <?php
 
-    session_start();
-    if(!isset($_SESSION['id_usuario']))
-    {
-        header("location: index.php");
-        exit;
-    }
+session_start();
+if (!isset($_SESSION['id_usuario'])) {
+    header("location: index.php");
+    exit;
+}
+
+require_once 'classes/livros.php';
+$livro = new Livro;
 
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="css/style3.css">
     <title>Biblioteca Virtual</title>
 </head>
+
 <body>
 
     <header id="header">
@@ -31,7 +35,7 @@
         </ul>
     </header>
 
-  <!--   <section class="filtro">
+    <!--   <section class="filtro">
 
         <div>
             <ul>
@@ -52,8 +56,15 @@
 
     </section> -->
 
-    <section class="livro-item"> 
-        
+    <section class="livro-item">
+        <?php
+
+
+        $livros = $livro->busca_livros();
+        foreach ($livros as $key => $item) {
+       
+
+        ?>
         <div class="livro">
             <div class="imagem">
                 <a href="">
@@ -62,40 +73,47 @@
             </div>
             <div class="info">
                 <p class="nome">
-                    <strong>Química Geral</strong>                    
+                    <strong>Nome:</strong>
+                    <?php print_r($item["nome"]) ?>
                 </p>
                 <p class="bloco1">
                     <strong>Autor:</strong>
-                    Maia, Daltamir Justino; Bianchi, J. C.
+                    <?php print_r($item["autor"]) ?>
+                    <br>
+                    <strong>Assunto</strong>
+                    <?php print_r($item["assunto"]) ?>
                     <br>
                     <strong>Editora:</strong>
-                    Editora Pearson
-                    <br>
-                    <strong>Idioma:</strong>
-                    Português
+                    <?php print_r($item["editora"]) ?>
+                    <br>                    
                 </p>
 
                 <p class="bloco2">
                     <strong>Edicao:</strong>
-                    1ª
+                    <?php print_r($item["edicao"]) ?>
                     <br>
                     <strong>Ano:</strong>
-                    --
+                    <?php print_r($item["ano"]) ?>
                     <br>
-                    <strong>Sinopse</strong>
-                    --
-                    <br>
+                    <strong>Idioma:</strong>
+                    <?php print_r($item["idioma"]) ?>
                 </p>
             </div>
         </div>
-        
-    </section> 
+
+        <?php  
+       
+        }
+        ?>
+
+    </section>
 
 
 
     <footer>
 
     </footer>
-    
+
 </body>
+
 </html>

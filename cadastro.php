@@ -1,6 +1,7 @@
 <?php
     require_once 'classes/usuarios.php';
     $usuario = new Usuario; //atribuição a classe 
+    //print_r($_POST);
 ?>
 
 <!DOCTYPE html>
@@ -113,32 +114,35 @@
         //Verificar se clicou no botão
         if(isset($_POST['nome']))
         {
-            $this->$nome = addslashes($_POST['nome']);
-            $this->$cpf = addslashes($_POST['cpf']);
-            $this->$email = addslashes($_POST['email']);
-            $this->$rg = addslashes($_POST['rg']);
-            $this->$sexo = addslashes($_POST['sexo']);           
-            $this->$data_nascimento = addslashes($_POST['data_nascimento']);
-            $this->$senha = addslashes($_POST['senha']);
-            $this->$conf_senha = addslashes($_POST['conf_senha']);
-            $this->$estado = addslashes($_POST['estado']);
-            $this->$cidade = addslashes($_POST['cidade']);
-            $this->$cep = addslashes($_POST['cep']);
-            $this->$bairro = addslashes($_POST['bairro']);
-            $this->$numero = addslashes($_POST['numero']);
-            $this->$rua = addslashes($_POST['rua']);
-            $this->$complemento = addslashes($_POST['complemento']);
+            
+            $usuario->nome = addslashes($_POST['nome']);
+            $usuario->cpf = addslashes($_POST['cpf']);
+            $usuario->email = addslashes($_POST['email']);
+            $usuario->rg = addslashes($_POST['rg']);
+            $usuario->sexo = addslashes($_POST['sexo']);           
+            $usuario->data_nascimento = addslashes($_POST['data_nascimento']);
+            $usuario->senha = addslashes($_POST['senha']);
+            $usuario->conf_senha = addslashes($_POST['conf_senha']);
+            $usuario->estado = addslashes($_POST['estado']);
+            $usuario->cidade = addslashes($_POST['cidade']);
+            $usuario->cep = addslashes($_POST['cep']);
+            $usuario->bairro = addslashes($_POST['bairro']);
+            $usuario->numero = addslashes($_POST['numero']);
+            $usuario->rua = addslashes($_POST['rua']);
+            $usuario->complemento = addslashes($_POST['complemento']);
 
+        
             // Verificar se esta preenchido
 
 
-            if(!empty($nome) && !empty($cpf) && !empty($email) && !empty($rg) && !empty($sexo) && !empty($data_nascimento) && !empty($senha) && !empty($conf_senha) && !empty($estado) && !empty($cidade) && !empty($cep) && !empty($bairro) && !empty($rua) && !empty($numero) && !empty($complemento))
-
+            //if(!empty($usuario->nome) && !empty($usuario->cpf) && !empty($usuario->email) && !empty($usuario->rg) && !empty($usuario->sexo) && !empty($usuario->data_nascimento) && !empty($usuario->senha) && !empty($usuario->conf_senha) && !empty($usuario->estado) && !empty($usuario->cidade) && !empty($usuario->cep) && !empty($usuario->bairro) && !empty($usuario->rua) && !empty($usuario->numero) && !empty($usuario->complemento))
+            if(1)
             {
+                
                 $usuario->conectar();
                 if($usuario->msgErro == "")  // se esta tudo certo
                 {
-                    if($senha == $conf_senha) 
+                    if($usuario->senha == $usuario->conf_senha) 
                     {
                         $retorno = $usuario->cadastrar();
                         

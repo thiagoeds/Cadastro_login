@@ -1,9 +1,9 @@
 <?php
 
-Class Usuario 
+require_once 'classes/DB.php';
+Class Usuario extends DB
 {
-    private $pdo;
-    public $msgErro = "";
+    
     
     public $nome;
     public $cpf;
@@ -18,25 +18,7 @@ Class Usuario
     public $bairro;
     public $rua;
     public $numero;
-    public $complemento;
-
-    public function conectar()
-    {
-        $nome = "cadastramento_login";
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "";
-
-        try
-        {
-            $this->pdo = new PDO("mysql:dbname=".$nome.";host=".$host,$usuario,$senha);  
-            return true;
-        } catch (PDOException $e) {
-            $msgErro = $e->getMessage();
-            return false;
-        }
-        
-    }
+    public $complemento;    
 
     public function cadastrar()
     {
@@ -44,7 +26,7 @@ Class Usuario
         //verificar se já existe o email cadastrado
 
         $sql = $this->pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :email");
-        $sql->bindValue(":email", $email);
+        $sql->bindValue(":email", $this->email);
         $sql->execute();
 
         if($sql->rowCount() > 0) {
@@ -56,22 +38,24 @@ Class Usuario
             //caso não, cadastrar
 
             $sql = $this->pdo->prepare("INSERT INTO usuarios (nome, cpf, email, rg, sexo, data_nascimento, senha, estado, cidade, cep, bairro, rua, numero, complemento) VALUES (:nome, :cpf, :email, :rg, :sexo, :data_nascimento, :senha, :estado, :cidade, :cep, :bairro, :rua, :numero, :complemento )");
-            $sql->bindValue(":nome", $this->$nome);
-            $sql->bindValue(":cpf", $this->$cpf);
-            $sql->bindValue(":email", $this->$email);
-            $sql->bindValue(":rg", $this->$rg);
-            $sql->bindValue(":sexo", $this->$sexo);
-            $sql->bindValue(":data_nascimento", $this->$data_nascimento);
-            $sql->bindValue(":senha", md5($this->$senha));
-            $sql->bindValue(":estado", $this->$estado);
-            $sql->bindValue(":cidade", $this->$cidade);
-            $sql->bindValue(":cep", $this->$cep);
-            $sql->bindValue(":bairro", $this->$bairro);
-            $sql->bindValue(":rua", $this->$rua);
-            $sql->bindValue(":numero", $this->$numero);
-            $sql->bindValue(":complemento", $this->$complemento);
+            $sql->bindValue(":nome", $this->nome);
+            $sql->bindValue(":cpf", $this->cpf);
+            $sql->bindValue(":email", $this->email);
+            $sql->bindValue(":rg", $this->rg);
+            $sql->bindValue(":sexo", $this->sexo);
+            $sql->bindValue(":data_nascimento", $this->data_nascimento);
+            $sql->bindValue(":senha", md5($this->senha));
+            $sql->bindValue(":estado", $this->estado);
+            $sql->bindValue(":cidade", $this->cidade);
+            $sql->bindValue(":cep", $this->cep);
+            $sql->bindValue(":bairro", $this->bairro);
+            $sql->bindValue(":rua", $this->rua);
+            $sql->bindValue(":numero", $this->numero);
+            $sql->bindValue(":complemento", $this->complemento);
 
-            $sql->execute();
+            if(!$sql->execute()){
+                var_dump($sql->errorInfo());
+            }
             return true;
         }
 
