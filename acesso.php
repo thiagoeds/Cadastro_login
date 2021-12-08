@@ -67,14 +67,14 @@ $livro = new Livro;
         ?>
         <div class="livro">
             <div class="imagem">
-                <a href="">
+                <a href="detalhe_livro.php?id_livro=<?php print_r($item['id_livro']) ?>">
                     <img src="./imagens/Quimica Geral.jpg" alt="Quimica Geral">
                 </a>
             </div>
             <div class="info">
                 <p class="nome">
                     <strong>Nome:</strong>
-                    <?php print_r($item["nome"]) ?>
+                    <?= $item["nome"] ?>
                 </p>
                 <p class="bloco1">
                     <strong>Autor:</strong>

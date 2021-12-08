@@ -28,6 +28,17 @@ Class Livro extends DB
         return $sql;
 
     }
+    
+    public function busca_livro_porId($id_livro) {
+
+        $this->conectar();
+        $sql = $this->pdo->prepare("SELECT * FROM livros WHERE id_livro = :id_livro");
+        $sql->bindValue(":id_livro", $id_livro);
+        $sql->execute();
+        $sql = $sql->fetchAll();
+        return $sql;
+
+    }
 
     public function cadastrar()
     {
