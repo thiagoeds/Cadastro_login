@@ -11,8 +11,7 @@
 
     $id_livro = $_GET["id_livro"];
 
-    $resultado = $livro->busca_livro_porId($id_livro);
-    
+    $resultado = $livro->busca_livro_porId($id_livro);    
 
     //var_dump($resultado);
 
@@ -25,7 +24,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style3.css">
+    <link rel="stylesheet" type="text/css" href="css/style4.css">
     <title>Biblioteca Virtual</title>
 </head>
 
@@ -40,49 +39,59 @@
     <section class="livro-item">
         <?php
 
-            //foreach ($livro as $key => $resultado)
-            //var_dump($resultado);
-            //foreach ($livros as $key => $item)
+            foreach ($resultado as $key => $item)
         
         {       
 
-        ?>
-        <div class="livro">
-            <div class="imagem">
-                <a href="">
-                    <img src="./imagens/Quimica Geral.jpg" alt="Quimica Geral">
-                </a>
+            ?>
+            <div id="boxLivro">
+                <div id="livro">
+                    <div id="imagem">
+                        <a href="">
+                            <img src="./imagens/Quimica Geral.jpg" alt="Quimica Geral">
+                        </a>
+                    </div>
+                    <div id="info">
+    
+                        <div class="bloco1"> 
+    
+                            <p class="nome">
+                                <strong>Nome:</strong>
+                                <?= $item["nome"] ?>
+                            </p>
+                        
+                            <strong>Autor:</strong>
+                            <?= $item["autor"] ?>
+                            <br>
+                            <strong>Editora:</strong>
+                            <?= $item["editora"] ?>
+                            <br>
+                            <strong>Categoria:</strong>
+                            <?= $item["categoria"] ?>
+                            <br>
+                            <strong>Idioma:</strong>
+                            <?= $item["idioma"] ?>
+                            <br> 
+                            <strong>Ano:</strong>
+                            <?= $item["ano"] ?>
+                            <br>
+                            <strong>Edicao:</strong>
+                            <?= $item["edicao"] ?>
+                            <br>
+                            <strong>Paginas:</strong>
+                            <?= $item["pagina"] ?>
+                            <br>
+                            <strong>Assunto</strong>
+                            <?= $item["assunto"] ?>                                                
+                            <br>
+                            <strong>Sinopse:</strong>
+                            <?= $item["sinopse"] ?>
+                        </div>
+    
+                    </div>
+                </div>
             </div>
-            <div class="info">
-                <p class="nome">
-                    <strong>Nome:</strong>
-                    <?= $resultado["nome"] ?>
-                </p>
-                <p class="bloco1">
-                    <strong>Autor:</strong>
-                    <?= $resultado["autor"] ?>
-                    <br>
-                    <strong>Assunto</strong>
-                    <?= $resultado["assunto"] ?>
-                    <br>
-                    <strong>Editora:</strong>
-                    <?= $resultado["editora"] ?>
-                    <br>                    
-                </p>
-
-                <p class="bloco2">
-                    <strong>Edicao:</strong>
-                    <?= $resultado["edicao"] ?>
-                    <br>
-                    <strong>Ano:</strong>
-                    <?= $resultado["ano"] ?>
-                    <br>
-                    <strong>Idioma:</strong>
-                    <?= $resultado["idioma"] ?>
-                </p>
-            </div>
-        </div>
-
+            
         <?php  
        
         }
