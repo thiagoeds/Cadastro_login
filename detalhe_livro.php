@@ -11,7 +11,14 @@
 
     $id_livro = $_GET["id_livro"];
 
-    $resultado = $livro->busca_livro_porId($id_livro);    
+    $resultado = $livro->busca_livro_porId($id_livro);   
+    
+    // require_once 'classes/usuarios.php';
+    // $usuario = new Usuario;
+
+    // $id_usuario = $_POST["id_usuario"];
+
+    // $resultado = $usuario->usuarioLogado($id_usuario);
 
     //var_dump($resultado);
 
@@ -32,7 +39,7 @@
 
         <?php
 
-            require_once 'cabecalho.php';
+            require_once 'cabecalho.php';            
 
         ?>
 
@@ -56,8 +63,8 @@
                         <div class="bloco1"> 
     
                             <p class="nome">
-                                <strong>Nome:</strong>
-                                <?= $item["nome"] ?>
+                                <strong><?= $item["nome"] ?></strong>
+                                
                             </p>
                         
                             <strong>Autor:</strong>

@@ -53,6 +53,11 @@ body {
     color: #FFF;
 }
 
+#header div .usuarioLogado label a {
+    padding-right: 6px;
+    color: #094b65;
+}
+
 /* filtro */
 
 .filtro {
@@ -70,21 +75,42 @@ body {
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.nome {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .livro {
-    padding: 25px 4px 4px 25px;
-    width: 300px;
-    height: 441px;
+    padding: auto 4px 4px 25px;
+    width: 22%;
+    /* height: 441px; */
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
     display: flex;
     flex-direction: column;
-    border-color: rgba(0, 0, 0, 0.493);
+    /* border-color: rgba(0, 0, 0, 0.493); */
     align-content: center;
     align-items: center;
 }
 
 .imagem img{
     width: 120px;
+}
+
+.bloco1 {
+    height: 250px;
+    /* display: flex; */
+    align-items: center;
+}
+
+.rodapeImagem a button {
+    width: 300px;
 }
 
 /* newLivro */
