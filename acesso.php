@@ -1,13 +1,23 @@
 <?php
 
-session_start();
+session_start(); // Inicialização da sessão
 if (!isset($_SESSION['id_usuario'])) {
     header("location: index.php");
     exit;
 }
+// $_SESSION['nome'] = $_POST['nome']; // Armazenandona sessão
 
 require_once 'classes/livros.php';
 $livro = new Livro;
+
+require_once 'classes/usuarios.php';
+$usuario = new Usuario;
+
+// $id_usuario = $_POST["id_usuario"];
+
+$resultado = $usuario->usuarioLogado($id_usuario);
+
+// var_dump($resultado);
 
 ?>
 
@@ -33,6 +43,27 @@ $livro = new Livro;
             <li><a href="#">Descrição</a></li>
             <li><a href="#">Contato</a></li>
         </ul>
+
+        <div class="usuarioLogado">
+        
+            <?php
+
+                $usuarios = $usuario->usuarioLogado();
+               
+                foreach ($usuarios as $key => $itemUsuario)
+                // var_dump($itemUsuario); 
+                {       
+
+                ?>
+                    <span><?= $itemUsuario["nome"] ?></span>            
+                <?php  
+        
+                }
+            ?>
+
+            <a href="index.php">Sair</a>
+
+        </div>
     </header>
 
     <!--   <section class="filtro">
@@ -72,33 +103,48 @@ $livro = new Livro;
                 </a>
             </div>
             <div class="info">
-                <p class="nome">
-                    <strong>Nome:</strong>
-                    <?= $item["nome"] ?>
-                </p>
-                <p class="bloco1">
-                    <strong>Autor:</strong>
-                    <?php print_r($item["autor"]) ?>
-                    <br>
-                    <strong>Assunto</strong>
-                    <?php print_r($item["assunto"]) ?>
-                    <br>
-                    <strong>Editora:</strong>
-                    <?php print_r($item["editora"]) ?>
-                    <br>                    
-                </p>
+                <div class="nome">
+                    <strong><?= $item["nome"] ?></strong>                    
+                </div>
+                <div class="bloco1"> 
+                        
+                    <div class="subbloco1">
+                      
+                        <strong>Autor:</strong>
+                        <?php print_r($item["autor"]) ?>
+                        <br>
+                        <strong>Assunto</strong>
+                        <?php print_r($item["assunto"]) ?>
+                        <br>                        
+                        
+                    </div>
 
-                <p class="bloco2">
-                    <strong>Edicao:</strong>
-                    <?php print_r($item["edicao"]) ?>
-                    <br>
-                    <strong>Ano:</strong>
-                    <?php print_r($item["ano"]) ?>
-                    <br>
-                    <strong>Idioma:</strong>
-                    <?php print_r($item["idioma"]) ?>
-                </p>
+                    <!-- <div class="subbloco2"> -->
+
+                        <strong>Editora:</strong>
+                        <?php print_r($item["editora"]) ?>
+                        <br>
+                        <strong>Edicao:</strong>
+                        <?php print_r($item["edicao"]) ?>
+                        <br>
+                        <strong>Ano:</strong>
+                        <?php print_r($item["ano"]) ?>
+                        <br>
+                        <strong>Idioma:</strong>
+                        <?php print_r($item["idioma"]) ?>   
+                        
+                    <!-- </div> -->
+                </div>
             </div>
+
+            <div class="rodapeImagem">
+                <a href="detalhe_livro.php?id_livro=<?= $item['id_livro'] ?>">
+                    <button>Detalhes</button>
+                </a>
+                 
+                <button>Disponivel</button>
+            </div>
+            
         </div>
 
         <?php  

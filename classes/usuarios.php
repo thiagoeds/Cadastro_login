@@ -61,6 +61,27 @@ Class Usuario extends DB
 
     }
 
+    public function usuarioLogado() {
+
+        $this->conectar();
+        $sql = $this->pdo->query("SELECT id_usuario FROM usuarios WHERE nome = :nome");
+        $sql->$_SESSION
+        $sql = $sql->fetch();
+        return $sql;
+
+    }
+
+    // public function usuarioLogado($id_usuario) {
+
+    //     $this->conectar();
+    //     $sql = $this->pdo->prepare("SELECT * FROM usuarios WHERE nome = :nome");
+    //     $sql->bindValue(":nome", $nome);
+    //     $sql->execute();
+    //     $sql = $sql->fetchAll();
+    //     return $sql;
+
+    // }
+
     public function logar($email, $senha)
     {
       

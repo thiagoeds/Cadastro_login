@@ -1,13 +1,13 @@
 <?php
 
-    session_start();
-        if (!isset($_SESSION['id_usuario'])) {
-            header("location: index.php");
-            exit;
-        }
+    // session_start();
+    //     if (!isset($_SESSION['id_usuario'])) {
+    //         header("location: index.php");
+    //         exit;
+    //     }
 
-    require_once 'classes/livros.php';
-    $livro = new Livro;
+    // require_once 'classes/livros.php';
+    // $livro = new Livro;
 
 ?>
 
@@ -32,6 +32,25 @@
                 <li><a href="#" class="active">Descrição</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
+
+            <div>
+        
+                <?php
+
+                    foreach ($resultado as $key => $itemUsuario)
+
+                    {       
+
+                    ?>
+                    <label for=""><?= $itemUsuario["nome"] ?></label>                
+                    <?php  
+            
+                    }
+                ?>
+
+                <a href="index.php">Sair</a>
+
+            </div>
         </header>
 
     </body>
