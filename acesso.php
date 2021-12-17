@@ -5,7 +5,7 @@ if (!isset($_SESSION['id_usuario'])) {
     header("location: index.php");
     exit;
 }
-// $_SESSION['nome'] = $_POST['nome']; // Armazenandona sessão
+// $_SESSION['nome'] = $_POST['nome']; // Armazenando na sessão
 
 require_once 'classes/livros.php';
 $livro = new Livro;
@@ -15,7 +15,7 @@ $usuario = new Usuario;
 
 // $id_usuario = $_POST["id_usuario"];
 
-$resultado = $usuario->usuarioLogado($id_usuario);
+// $resultado = $usuario->usuarioLogado($id_usuario);
 
 // var_dump($resultado);
 
@@ -48,14 +48,14 @@ $resultado = $usuario->usuarioLogado($id_usuario);
         
             <?php
 
-                $usuarios = $usuario->usuarioLogado();
+                // $usuarios = $usuario->usuarioLogado();
                
-                foreach ($usuarios as $key => $itemUsuario)
+                // foreach ($usuarios as $key => $itemUsuario)
                 // var_dump($itemUsuario); 
                 {       
 
                 ?>
-                    <span><?= $itemUsuario["nome"] ?></span>            
+                    <span></span>            
                 <?php  
         
                 }
@@ -138,11 +138,15 @@ $resultado = $usuario->usuarioLogado($id_usuario);
             </div>
 
             <div class="rodapeImagem">
-                <a href="detalhe_livro.php?id_livro=<?= $item['id_livro'] ?>">
-                    <button>Detalhes</button>
-                </a>
-                 
-                <button>Disponivel</button>
+                <div>
+                    <a href="detalhe_livro.php?id_livro=<?= $item['id_livro'] ?>">
+                        <button class="btn-detalhes">Detalhes</button>
+                    </a>
+                </div>
+
+                <div>
+                    <button class="btn-disponibilidade">Disponivel</button>
+                </div>                 
             </div>
             
         </div>
