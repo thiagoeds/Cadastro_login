@@ -47,7 +47,11 @@ $usuario = new Usuario;
         <div class="usuarioLogado">
         
             <?php
-
+                if (!$_SESSION["loggedin"]) {
+                    include_once "index.php";
+                } else {
+                    include_once "acesso.php";
+                }
                 // $usuarios = $usuario->usuarioLogado();
                
                 // foreach ($usuarios as $key => $itemUsuario)
@@ -57,7 +61,7 @@ $usuario = new Usuario;
                 ?>
                     <span></span>            
                 <?php  
-        
+
                 }
             ?>
 
@@ -119,7 +123,7 @@ $usuario = new Usuario;
                         
                     </div>
 
-                    <!-- <div class="subbloco2"> -->
+                    <div class="subbloco2">
 
                         <strong>Editora:</strong>
                         <?php print_r($item["editora"]) ?>
@@ -133,7 +137,7 @@ $usuario = new Usuario;
                         <strong>Idioma:</strong>
                         <?php print_r($item["idioma"]) ?>   
                         
-                    <!-- </div> -->
+                    </div>
                 </div>
             </div>
 
