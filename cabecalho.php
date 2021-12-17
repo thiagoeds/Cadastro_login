@@ -37,12 +37,12 @@
         
                 <?php
 
-                    foreach ($resultado as $key => $itemUsuario)
+                    // foreach ($resultado as $key => $itemUsuario)
 
                     {       
 
                     ?>
-                    <label for=""><?= $itemUsuario["nome"] ?></label>                
+                    <label for="">Thiago</label>                
                     <?php  
             
                     }

@@ -61,50 +61,32 @@ Class Usuario extends DB
 
     }
 
-    public function usuarioLogado() {
-
-        $this->conectar();
-        $sql = $this->pdo->query("SELECT id_usuario FROM usuarios WHERE nome = :nome");
-        $sql->$_SESSION
-        $sql = $sql->fetch();
-        return $sql;
-
-    }
-
-    // public function usuarioLogado($id_usuario) {
-
-    //     $this->conectar();
-    //     $sql = $this->pdo->prepare("SELECT * FROM usuarios WHERE nome = :nome");
-    //     $sql->bindValue(":nome", $nome);
-    //     $sql->execute();
-    //     $sql = $sql->fetchAll();
-    //     return $sql;
-
-    // }
 
     public function logar($email, $senha)
     {
       
-  if($this->conectar()){
+    if($this->conectar()){
 
-        //verificar se o email e senha estão cadastrados, se sim
-        $sql = $this->pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha");
-        $sql->bindValue(":email", $email);
-        $sql->bindValue(":senha", md5($senha));
-        $sql->execute();
-        if($sql->rowCount() > 0) 
-        {   
-             
-            //entrar no sistema (sessão)
-            $dados = $sql->fetch();
-            session_start();
-            $_SESSION['id_usuario'] = $dados['id_usuario'];
-            return true; //usuario encontrado com sucesso
+            //verificar se o email e senha estão cadastrados, se sim
+            $sql = $this->pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha");
+            $sql->bindValue(":email", $email);
+            $sql->bindValue(":senha", md5($senha));
+            $sql->execute();
+            if($sql->rowCount() > 0) 
+            {   
+                
+                //entrar no sistema (sessão)
+                $dados = $sql->fetch();
+                session_start();
+                $_SESSION['id_usuario'] = $dados['id_usuario'];
+                $_SESSION['loggedin'] = true;
+                $_SESSION['nome'] = $this->nome;
+                return true; //usuario encontrado com sucesso
 
-        } else {
-            return false; //não foi possivel logar
-        }       
-    }
+            } else {
+                return false; //não foi possivel logar
+            }       
+        }
     }
 }
 

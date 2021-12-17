@@ -1,6 +1,5 @@
 <?php
 
-
 	require_once 'classes/usuarios.php';
 	$usuario = new Usuario;
 	//echo $_GET['id'];
