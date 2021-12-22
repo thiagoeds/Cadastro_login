@@ -1,7 +1,7 @@
 <?php
     require_once 'classes/usuarios.php';
     $usuario = new Usuario; //atribuição a classe 
-    //print_r($_POST);
+    // print_r($_POST);
 ?>
 
 <!DOCTYPE html>
@@ -22,13 +22,15 @@
             <h1>Area do Aluno</h1><br>
             <h3>Cadastro</h3><br>
             <label for="nome">Nome:</label>
-            <input type="text" name="nome" size="40" placeholder="Nome Completo" require maxlength="50">
+            <input type="text" name="nome" size="15" placeholder="Nome" require maxlength="10">
+            <label for="nome">Sobrenome:</label>
+            <input type="text" name="sobrenome" size="20" placeholder="Sobrenome" require maxlength="30">
             <label for="cpf">CPF:</label>
             <input type="text" name="cpf" placeholder="123.456.789-10" require maxlength="14"><br><br>
             <label for="email">e-mail:</label>
             <input type="email" name="email" size="40" placeholder="e-mail valido" require  maxlength="100">
             <label for="rg">RG:</label>
-            <input type="text" name="rg" size="40" placeholder="12.345.678" maxlength="15"><br><br>
+            <input type="text" name="rg" size="20" placeholder="12.345.678" maxlength="15"><br><br>
                 <label>Sexo:</label>
                 <select name="sexo" >
                     <option value="0">como se identifica</option>             
@@ -101,7 +103,7 @@
             <button onclick="location.href='index.php'" type="button">
             Voltar</button>
                 &nbsp;&nbsp;&nbsp;
-                <button>Cadastrar</button>                 
+                <button type="submit">Cadastrar</button>                 
                 
             </div>  <br>                  
 
@@ -116,6 +118,7 @@
         {
             
             $usuario->nome = addslashes($_POST['nome']);
+            $usuario->sobrenome = addslashes($_POST['sobrenome']);
             $usuario->cpf = addslashes($_POST['cpf']);
             $usuario->email = addslashes($_POST['email']);
             $usuario->rg = addslashes($_POST['rg']);
@@ -131,11 +134,11 @@
             $usuario->rua = addslashes($_POST['rua']);
             $usuario->complemento = addslashes($_POST['complemento']);
 
-        
+
             // Verificar se esta preenchido
 
 
-            //if(!empty($usuario->nome) && !empty($usuario->cpf) && !empty($usuario->email) && !empty($usuario->rg) && !empty($usuario->sexo) && !empty($usuario->data_nascimento) && !empty($usuario->senha) && !empty($usuario->conf_senha) && !empty($usuario->estado) && !empty($usuario->cidade) && !empty($usuario->cep) && !empty($usuario->bairro) && !empty($usuario->rua) && !empty($usuario->numero) && !empty($usuario->complemento))
+            //if(!empty($usuario->nome) && !empty($usuario->sobrenome) && !empty($usuario->cpf) && !empty($usuario->email) && !empty($usuario->rg) && !empty($usuario->sexo) && !empty($usuario->data_nascimento) && !empty($usuario->senha) && !empty($usuario->conf_senha) && !empty($usuario->estado) && !empty($usuario->cidade) && !empty($usuario->cep) && !empty($usuario->bairro) && !empty($usuario->rua) && !empty($usuario->numero) && !empty($usuario->complemento))
             if(1)
             {
                 
@@ -173,7 +176,7 @@
                             <?php  echo "Erro: ".$usuario->msgErro; ?>
                         </div>
                     <?php 
-                   
+                
                 }                
             } else {
                 ?>

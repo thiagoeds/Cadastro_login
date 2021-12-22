@@ -35,38 +35,44 @@
         </header>
 
         <section id="formulario">
-            <form class="form-livro" action="newLivro.php" method="post">
-                <label for="name">Nome:</label>
-                <input type="text" name="nome" size="155">  <br>
-                <label for="name">Autor:</label>
-                <input type="text" name="autor" size="155">  <br>
-                <label for="name">Editora:</label>
-                <input type="text" name="editora" size="150"> <br>
-                <label for="name">Categoria:</label>
-                <input type="text" name="categoria" size="150">  <br>
-                <label for="name">Idioma:</label>
-                <input type="text" name="idioma" size="150"> <br> 
-                <label for="name">Ano:</label>
-                <input type="text" name="ano" size="155">  <br>
-                <label for="name">Página:</label>
-                <input type="text" name="pagina" size="150">  <br>
-                <label for="name">Edição:</label>
-                <input type="text" name="edicao" size="150"> <br>
-                <label for="name">Assunto:</label>
-                <input type="text" name="assunto" size="152"> <br>
-                <label for="name">Sinopse:</label>
-                <textarea class="borda" id="textarea" name="sinopse"></textarea> <br>
-			
-                <div class="botao">
-                    <button onclick="location.href='acesso.php'" type="button">
-                    Voltar</button>
+           
+            <div class="box-form">
+                <form class="form-livro" action="newLivro.php" method="post">
+                    <label for="name" >Nome:</label>
+                    <input type="text" name="nome" size="70" maxlength="80">  <br>
+                    <label for="name" >Autor:</label>
+                    <input type="text" name="autor" size="70" maxlength="30">  <br>
+                    <label for="name" >Editora:</label>
+                    <input type="text" name="editora" size="70" maxlength="30"> <br>
+                    <label for="name" >Categoria:</label>
+                    <input type="text" name="categoria" size="70" maxlength="50">  <br>
+                    <label for="name" >Idioma:</label>
+                    <input type="text" name="idioma" size="70" maxlength="50"> <br> 
+                    <label for="name" >Ano:</label>
+                    <input type="text" name="ano" size="70">  <br>
+                    <label for="name" >Página:</label>
+                    <input type="text" name="pagina" size="70">  <br>
+                    <label for="name" >Edição:</label>
+                    <input type="text" name="edicao" size="70"> <br>
+                    <label for="name" >Assunto:</label>
+                    <input type="text" name="assunto" size="70" maxlength="50"> <br>
+                    <label for="name" >LInk da capa livro:</label>
+                    <input type="text" name="capa" size="70" maxlength="255"> <br><br>
+                    <label for="name">Sinopse:</label> <br>
+                    <textarea class="borda" id="textarea" name="sinopse"></textarea> <br>
+                
+                    <div class="botao">
+                        <button onclick="location.href='acesso.php'" type="button">
+                        Voltar</button>
 
-                    &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
 
-                    <button>Cadastrar</button>
-                </div>                
+                        <button>Cadastrar</button>
+                    </div>
+            
+                </form>
+            </div>
 
-            </form>
         </section>
 
 
@@ -88,11 +94,12 @@
                 $livro->pagina = addslashes($_POST['pagina']);
                 $livro->edicao = addslashes($_POST['edicao']);
                 $livro->assunto = addslashes($_POST['assunto']);
+                $livro->capa = addslashes($_POST['capa']);
                 $livro->sinopse = addslashes($_POST['sinopse']);
 
-                // Verificar se esta preenchido
+                // Verificar se esta preenchido 
 
-                if(!empty($livro->nome) && !empty($livro->autor) && !empty($livro->editora) && !empty($livro->categoria) && !empty($livro->idioma) &&  !empty($livro->ano) &&  !empty($livro->pagina) && !empty($livro->edicao) && !empty($livro->assunto) && !empty($livro->sinopse))  
+                if(!empty($livro->nome) && !empty($livro->autor) && !empty($livro->editora) && !empty($livro->categoria) && !empty($livro->idioma) &&  !empty($livro->ano) &&  !empty($livro->pagina) && !empty($livro->edicao) && !empty($livro->assunto) && !empty($livro->capa) && !empty($livro->sinopse))  
                 
                 {
                    $livro->conectar();

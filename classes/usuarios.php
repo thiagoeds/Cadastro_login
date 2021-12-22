@@ -6,6 +6,7 @@ Class Usuario extends DB
     
     
     public $nome;
+    public $sobrenome;
     public $cpf;
     public $email;
     public $rg;
@@ -37,8 +38,9 @@ Class Usuario extends DB
 
             //caso não, cadastrar
 
-            $sql = $this->pdo->prepare("INSERT INTO usuarios (nome, cpf, email, rg, sexo, data_nascimento, senha, estado, cidade, cep, bairro, rua, numero, complemento) VALUES (:nome, :cpf, :email, :rg, :sexo, :data_nascimento, :senha, :estado, :cidade, :cep, :bairro, :rua, :numero, :complemento )");
+            $sql = $this->pdo->prepare("INSERT INTO usuarios (nome, sobrenome, cpf, email, rg, sexo, data_nascimento, senha, estado, cidade, cep, bairro, rua, numero, complemento) VALUES (:nome, :sobrenome, :cpf, :email, :rg, :sexo, :data_nascimento, :senha, :estado, :cidade, :cep, :bairro, :rua, :numero, :complemento )");
             $sql->bindValue(":nome", $this->nome);
+            $sql->bindValue(":sobrenome", $this->sobrenome);
             $sql->bindValue(":cpf", $this->cpf);
             $sql->bindValue(":email", $this->email);
             $sql->bindValue(":rg", $this->rg);
@@ -61,34 +63,30 @@ Class Usuario extends DB
 
     }
 
-
     public function logar($email, $senha)
     {
       
-    if($this->conectar()){
+  if($this->conectar()){
 
-            //verificar se o email e senha estão cadastrados, se sim
-            $sql = $this->pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha");
-            $sql->bindValue(":email", $email);
-            $sql->bindValue(":senha", md5($senha));
-            $sql->execute();
-            if($sql->rowCount() > 0) 
-            {   
-                
-                //entrar no sistema (sessão)
-                $dados = $sql->fetch();
-                session_start();
-                $_SESSION['id_usuario'] = $dados['id_usuario'];
-                $_SESSION['loggedin'] = true;
-                $_SESSION['nome'] = $this->nome;
-                return true; //usuario encontrado com sucesso
+        //verificar se o email e senha estão cadastrados, se sim
+        $sql = $this->pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha");
+        $sql->bindValue(":email", $email);
+        $sql->bindValue(":senha", md5($senha));
+        $sql->execute();
+        if($sql->rowCount() > 0) 
+        {   
+             
+            //entrar no sistema (sessão)
+            $dados = $sql->fetch();
+            session_start();
+            $_SESSION['id_usuario'] = $dados['id_usuario'];
+            return true; //usuario encontrado com sucesso
 
-            } else {
-                return false; //não foi possivel logar
-            }       
-        }
+        } else {
+            return false; //não foi possivel logar
+        }       
+    }
     }
 }
-
 
 ?>

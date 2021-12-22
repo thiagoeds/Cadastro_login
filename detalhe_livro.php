@@ -55,7 +55,7 @@
                 <div id="livro">
                     <div id="imagem">
                         <a href="">
-                            <img src="./imagens/Quimica Geral.jpg" alt="Quimica Geral">
+                        <img src="<?= $item["capa"] ?>">
                         </a>
                     </div>
                     <div id="info">

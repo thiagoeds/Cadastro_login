@@ -13,6 +13,7 @@ Class Livro extends DB
     public $pagina;
     public $edicao;
     public $assunto;
+    public $capa;
     public $sinopse;
 
     //acessar a tabela (executar sql)
@@ -57,7 +58,7 @@ Class Livro extends DB
 
             //caso não, cadastrar
 
-            $sql = $this->pdo->prepare("INSERT INTO livros (nome, autor, editora, categoria, idioma, ano, pagina, edicao, assunto, sinopse) VALUES (:nome, :autor, :editora, :categoria, :idioma, :ano, :pagina, :edicao, :assunto, :sinopse)");
+            $sql = $this->pdo->prepare("INSERT INTO livros (nome, autor, editora, categoria, idioma, ano, pagina, edicao, assunto, capa, sinopse) VALUES (:nome, :autor, :editora, :categoria, :idioma, :ano, :pagina, :edicao, :assunto, :capa, :sinopse)");
 
             $sql->bindValue(":nome", $this->nome);
             $sql->bindValue(":autor", $this->autor);
@@ -68,6 +69,7 @@ Class Livro extends DB
             $sql->bindValue(":pagina", $this->pagina);
             $sql->bindValue(":edicao", $this->edicao);
             $sql->bindValue(":assunto", $this->assunto);
+            $sql->bindValue(":capa", $this->capa);
             $sql->bindValue(":sinopse", $this->sinopse);
 
             if(!$sql->execute()){

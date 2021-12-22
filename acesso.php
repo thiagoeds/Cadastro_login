@@ -1,23 +1,14 @@
 <?php
 
-session_start(); // Inicialização da sessão
-if (!isset($_SESSION['id_usuario'])) {
+session_start();
+if(!isset($_SESSION['id_usuario']))
+{
     header("location: index.php");
     exit;
 }
-// $_SESSION['nome'] = $_POST['nome']; // Armazenando na sessão
 
 require_once 'classes/livros.php';
 $livro = new Livro;
-
-require_once 'classes/usuarios.php';
-$usuario = new Usuario;
-
-// $id_usuario = $_POST["id_usuario"];
-
-// $resultado = $usuario->usuarioLogado($id_usuario);
-
-// var_dump($resultado);
 
 ?>
 
@@ -47,11 +38,11 @@ $usuario = new Usuario;
         <div class="usuarioLogado">
         
             <?php
-                if (!$_SESSION["loggedin"]) {
-                    include_once "index.php";
-                } else {
-                    include_once "acesso.php";
-                }
+                // if (!$_SESSION["loggedin"]) {
+                //     include_once "index.php";
+                // } else {
+                //     include_once "acesso.php";
+                // }
                 // $usuarios = $usuario->usuarioLogado();
                
                 // foreach ($usuarios as $key => $itemUsuario)
@@ -103,7 +94,7 @@ $usuario = new Usuario;
         <div class="livro">
             <div class="imagem">
                 <a href="detalhe_livro.php?id_livro=<?php print_r($item['id_livro']) ?>">
-                    <img src="./imagens/Quimica Geral.jpg" alt="Quimica Geral">
+                    <img src="<?= $item["capa"] ?>">
                 </a>
             </div>
             <div class="info">

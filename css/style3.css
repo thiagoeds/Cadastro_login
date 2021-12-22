@@ -99,8 +99,14 @@ body {
     width: 120px;
 }
 
+.info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .nome {
-    height: 80px;
+    height: 100px;
     display: flex;
     font-size: 0.9em;
     align-items: center;
@@ -108,19 +114,26 @@ body {
 }
 
 .bloco1 {
-    height: 210px;
-    align-items: center;
+    height: 200px;
     font-size: 0.8em;
+    /* display: flex; */
+    /* align-items: center;
+    flex-direction: column;
+    justify-content: center; */
 }
 
 .subbloco1 {
-    align-items: center;
-    justify-content: center;
+    /* display: flex; */
+    /* align-items: center;
+    flex-direction: column;
+    justify-content: center; */
 }
 
 .subbloco2 {
-    align-items: center;
-    justify-content: center;
+    /* display: flex; */
+    /* align-items: center;
+    flex-direction: column;
+    justify-content: center; */
 }
 
 .rodapeImagem {
@@ -152,9 +165,22 @@ body {
     align-items: center;
 }
 
+.box-form {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    background-color: brown;
+}
+
 .form-livro {
     margin: 50px;
     width: 80%;
+    background-color: chocolate;
+}
+
+.form-livro label {
+    width: 20%;
+    background-color: cornflowerblue;
 }
 
 .form-livro input {
@@ -162,6 +188,7 @@ body {
     border-right: none;
     border-left: none;
     border-bottom: 1px solid #000;
+    /* width: 70%; */
 }
 
 .form-livro textarea {
