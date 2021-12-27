@@ -82,7 +82,7 @@ $livro = new Livro;
 
     </section> -->
 
-    <section class="livro-item">
+    <section class="livro-itemAc">
         <?php
 
 
@@ -91,19 +91,19 @@ $livro = new Livro;
        
 
         ?>
-        <div class="livro">
-            <div class="imagem">
+        <div class="livroAc">
+            <div class="imagemAc">
                 <a href="detalhe_livro.php?id_livro=<?php print_r($item['id_livro']) ?>">
                     <img src="<?= $item["capa"] ?>">
                 </a>
             </div>
-            <div class="info">
-                <div class="nome">
+            <div class="infoAc">
+                <div class="nomeAc">
                     <strong><?= $item["nome"] ?></strong>                    
                 </div>
-                <div class="bloco1"> 
+                <div class="bloco1Ac"> 
                         
-                    <div class="subbloco1">
+                    <div class="subbloco1Ac">
                       
                         <strong>Autor:</strong>
                         <?php print_r($item["autor"]) ?>
@@ -114,7 +114,7 @@ $livro = new Livro;
                         
                     </div>
 
-                    <div class="subbloco2">
+                    <div class="subbloco2Ac">
 
                         <strong>Editora:</strong>
                         <?php print_r($item["editora"]) ?>
@@ -132,15 +132,15 @@ $livro = new Livro;
                 </div>
             </div>
 
-            <div class="rodapeImagem">
+            <div class="rodapeImagemAc">
                 <div>
                     <a href="detalhe_livro.php?id_livro=<?= $item['id_livro'] ?>">
-                        <button class="btn-detalhes">Detalhes</button>
+                        <button class="btn-detalhesAc">Detalhes</button>
                     </a>
                 </div>
 
                 <div>
-                    <button class="btn-disponibilidade">Disponivel</button>
+                    <button class="btn-disponibilidadeAc">Disponivel</button>
                 </div>                 
             </div>
             

@@ -43,7 +43,7 @@
 
         ?>
 
-    <section class="livro-item">
+    <section id="livro-item">
         <?php
 
             foreach ($resultado as $key => $item)
@@ -60,9 +60,9 @@
                     </div>
                     <div id="info">
     
-                        <div class="bloco1"> 
+                        <div id="bloco1"> 
     
-                            <p class="nome">
+                            <p id="nome">
                                 <strong><?= $item["nome"] ?></strong>
                                 
                             </p>

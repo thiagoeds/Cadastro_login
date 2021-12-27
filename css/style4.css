@@ -14,8 +14,7 @@ body {
 }
 
 #livro-item {
-    padding-left: 70px;
-    padding-right: 70px;
+    width: 80%;
     display: flex;
     justify-content: space-around;
     flex-direction: row;
@@ -23,7 +22,6 @@ body {
 }
 
 #boxLivro {
-    /* width: 80%; */
     display: flex;
     margin-top: 50px;
     
@@ -52,4 +50,9 @@ body {
 
 .bloco1 {
     float: left;
+}
+
+.nome strong {
+    font-size: 1.7em;
+    padding-bottom: 10px;
 }

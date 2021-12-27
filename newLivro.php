@@ -38,28 +38,40 @@
            
             <div class="box-form">
                 <form class="form-livro" action="newLivro.php" method="post">
-                    <label for="name" >Nome:</label>
-                    <input type="text" name="nome" size="70" maxlength="80">  <br>
-                    <label for="name" >Autor:</label>
-                    <input type="text" name="autor" size="70" maxlength="30">  <br>
-                    <label for="name" >Editora:</label>
-                    <input type="text" name="editora" size="70" maxlength="30"> <br>
-                    <label for="name" >Categoria:</label>
-                    <input type="text" name="categoria" size="70" maxlength="50">  <br>
-                    <label for="name" >Idioma:</label>
-                    <input type="text" name="idioma" size="70" maxlength="50"> <br> 
-                    <label for="name" >Ano:</label>
-                    <input type="text" name="ano" size="70">  <br>
-                    <label for="name" >Página:</label>
-                    <input type="text" name="pagina" size="70">  <br>
-                    <label for="name" >Edição:</label>
-                    <input type="text" name="edicao" size="70"> <br>
-                    <label for="name" >Assunto:</label>
-                    <input type="text" name="assunto" size="70" maxlength="50"> <br>
-                    <label for="name" >LInk da capa livro:</label>
-                    <input type="text" name="capa" size="70" maxlength="255"> <br><br>
-                    <label for="name">Sinopse:</label> <br>
-                    <textarea class="borda" id="textarea" name="sinopse"></textarea> <br>
+                    
+                    <div class="form">
+                        <div class="formLabel" >
+                            <label for="name" >Nome:</label> <br>
+                            <label for="name" >Autor:</label>  <br>
+                            <label for="name" >Editora:</label>  <br>
+                            <label for="name" >Categoria:</label>  <br>
+                            <label for="name" >Idioma:</label>  <br>
+                            <label for="name" >Ano:</label>  <br>
+                            <label for="name" >Página:</label>  <br>
+                            <label for="name" >Edição:</label>  <br>
+                            <label for="name" >Assunto:</label>  <br>
+                            <label for="name" >Link da capa livro:</label>                 
+                        </div>
+
+                        <div class="formInput">
+                            <input type="text" name="nome" maxlength="80">  <br>
+                            <input type="text" name="autor" maxlength="30">  <br>
+                            <input type="text" name="editora" maxlength="30"> <br>
+                            <input type="text" name="categoria" maxlength="50">  <br>
+                            <input type="text" name="idioma" maxlength="50"> <br>   
+                            <input type="text" name="ano">  <br>                    
+                            <input type="text" name="pagina">  <br>                   
+                            <input type="text" name="edicao"> <br>                    
+                            <input type="text" name="assunto" maxlength="255"> <br>                    
+                            <input type="text" name="capa" maxlength="255">    
+                        </div>
+                        
+                    </div>
+
+                    <div class="sinopse">                       
+                            <label class="LabelSinopse" for="name">Sinopse:</label>
+                            <textarea class="borda" id="textarea" type="text" name="sinopse"></textarea>
+                    </div>
                 
                     <div class="botao">
                         <button onclick="location.href='acesso.php'" type="button">
@@ -67,7 +79,7 @@
 
                         &nbsp;&nbsp;&nbsp;
 
-                        <button>Cadastrar</button>
+                        <button class="btn_focus">Cadastrar</button>
                     </div>
             
                 </form>
